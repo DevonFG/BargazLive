@@ -15,6 +15,20 @@ Any other changes, regardless of size, is considered a patch. (Very few exceptio
 Note: A change from dev or beta to a release is not impacted by an untestable feature like needing to wait for a
 specific platform to have new content. In cases like that, the untested feature can be logged and the version released.
 
+## v26.0.2-beta.1 - Nov 9
+- Fully connected bargaz.app, bot.bargaz.app, live.bargaz.app, and randomwolf08.com
+- Added deticated pages for BargazBot, BargazLive, and RandomWolf08
+- Added dynamic Github readme, changelog, and legal document pages
+- Added website appearance settings, including light/dark mode, accent colors, high contrasn mode, and colorblind accessibility options
+- Added a ssytem for synchronizing appearance preperences across sites
+- Added domain-specific browser-tab favicons
+- Added a shared footer with project links, contact information, and licensing information
+- Updated the site to use the associated colors for either brand (#3D5A77 and #8D0122)
+- Updated internal navigation and external-link handling
+- Reduced flashes during navigation while in dark mode
+Note: This update wasn't meant to be committed yet. I still need to crop one of the favicons and retest.
+I just ran into an issue that I felt worth committing first for.
+
 ## v26.0.1 - Nov 9
 - Set up Node.js, npm, and Next.js
 - Configured .env and .gitignore

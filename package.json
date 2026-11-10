@@ -1,6 +1,6 @@
 {
   "name": "bargazlive",
-  "version": "26.0.1",
+  "version": "26.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,10 +17,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "html-react-parser": "^6.1.9",
     "next": "^16.4.6",
     "octokit": "^5.0.5",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "react-markdown": "^10.1.0",
+    "remark-breaks": "^4.0.0",
+    "remark-gfm": "^4.0.1",
+    "sanitize-html": "^2.18.1"
   },
   "type": "module"
 }
