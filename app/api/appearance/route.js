@@ -1,1 +1,0 @@
-../../../website/app/api/appearance/route.js

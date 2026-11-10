@@ -1,4 +1,4 @@
-export { default } from "../../../pages/bargaz/bot-privacy-page";
+export { default } from "../../../views/bargaz/bot-privacy-page";
 
 export const dynamic = "force-dynamic";
 

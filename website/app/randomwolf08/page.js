@@ -1,1 +1,1 @@
-export { default } from "../../pages/randomwolf08/home-page";
+export { default } from "../../views/randomwolf08/home-page";

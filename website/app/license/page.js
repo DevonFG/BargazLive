@@ -1,2 +1,2 @@
-export { default } from "../../pages/bargaz/license-page";
-export { metadata } from "../../pages/bargaz/license-page";
+export { default } from "../../views/bargaz/license-page";
+export { metadata } from "../../views/bargaz/license-page";

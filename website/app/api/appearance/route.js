@@ -7,7 +7,7 @@ import os from "node:os";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const DATA_DIR = path.join(
+const DATA_DIR = process.env.BARGAZLIVE_DATA_DIR || path.join(
   os.homedir(),
   ".local",
   "share",
@@ -80,6 +80,19 @@ async function writeData(data) {
   await fs.rename(temporary, DATA_FILE);
 }
 
+let pendingUpdate = Promise.resolve();
+
+function updatePreferences(id, preferences) {
+  const operation = pendingUpdate.catch(() => {}).then(async () => {
+    const data = await readData();
+    data[id] = preferences;
+    await writeData(data);
+  });
+
+  pendingUpdate = operation;
+  return operation;
+}
+
 const noCache = {
   "Cache-Control": "no-store",
 };
@@ -135,11 +148,7 @@ export async function PUT(request) {
   }
 
   try {
-    const data = await readData();
-
-    data[id] = preferences;
-
-    await writeData(data);
+    await updatePreferences(id, preferences);
 
     return NextResponse.json(
       { success: true },

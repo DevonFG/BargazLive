@@ -3,13 +3,19 @@ import Header from "../components/shared/header";
 import SiteControls from "../components/shared/site-controls";
 import "./globals.css";
 import Footer from "../components/shared/footer";
-export const metadata = {title: "Bargaz", description: "Bargaz software, services, and projects",};
 export async function generateMetadata() {
   const h = await headers();
   const hostname = (h.get("x-bargaz-hostname") || h.get("x-forwarded-host") || h.get("host") || "").split(",")[0].trim().split(":")[0].toLowerCase();
   const isRandomWolf = hostname === "randomwolf08.com" || hostname === "www.randomwolf08.com";
   const favicon = isRandomWolf ? "/logos/randomwolf08-logo.png" : "/logos/bargaz-logo.png";
-  return {title: isRandomWolf ? "RandomWolf08" : "Bargaz", icons: {icon: [{url: favicon, type: "image/png",},], shortcut: favicon,},};
+  return {
+    title: isRandomWolf ? "RandomWolf08" : "Bargaz",
+    description: "Bargaz software, services, and projects",
+    icons: {
+      icon: [{url: favicon, type: "image/png"}],
+      shortcut: favicon
+    }
+  };
 }
 
 
@@ -31,5 +37,10 @@ export default function RootLayout({ children }) {return (
     />
   </head>
   <body>
-    <Header /><SiteControls /><div className="site-content">{children}</div>
-  </body><Footer /></html>);}
+    <Header />
+    <SiteControls />
+    <div className="site-content">{children}</div>
+    <Footer />
+  </body>
+</html>
+);}

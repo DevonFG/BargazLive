@@ -1,1 +1,1 @@
-export { default } from "../pages/bargaz/home-page";
+export { default } from "../views/bargaz/home-page";

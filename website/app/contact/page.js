@@ -1,2 +1,2 @@
-export { default } from "../../pages/bargaz/contact-page";
-export { metadata } from "../../pages/bargaz/contact-page";
+export { default } from "../../views/bargaz/contact-page";
+export { metadata } from "../../views/bargaz/contact-page";

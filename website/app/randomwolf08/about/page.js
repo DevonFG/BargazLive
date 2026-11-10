@@ -1,2 +1,2 @@
-export { default } from "../../../pages/randomwolf08/about-page";
-export { metadata } from "../../../pages/randomwolf08/about-page";
+export { default } from "../../../views/randomwolf08/about-page";
+export { metadata } from "../../../views/randomwolf08/about-page";
