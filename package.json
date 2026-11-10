@@ -1,0 +1,26 @@
+{
+  "name": "bargazlive",
+  "version": "26.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev -H 127.0.0.1 -p 3100",
+    "build": "next build",
+    "start": "next start -H 127.0.0.1 -p 3100"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-bargazlive:DevonFG/BargazLive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^16.4.6",
+    "octokit": "^5.0.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "type": "module"
+}
