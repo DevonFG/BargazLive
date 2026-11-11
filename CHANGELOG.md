@@ -19,6 +19,9 @@ specific platform to have new content. In cases like that, the untested feature 
 Additional Note: Error versions can have beta, dev, and release version
 before and afterwards due to the multi-use of the version type.
 
+## v26.0.2 - Nov 10
+- Confirmed all features working!
+
 ## v26.0.2-error.1 - Nov 10
 - Removed root level app/, proxy.js, and public symlinkgs, keeping the website source under website/
 - Moved page components from website/pages/ to website/views/ and updated their imports
