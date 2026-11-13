@@ -1,8 +1,8 @@
 {
   "name": "bargazlive",
-  "version": "26.0.2",
-  "description": "",
-  "main": "index.js",
+  "version": "26.1.0",
+  "description": "BargazLive website for bargaz.app, bot.bargaz.app, and live.bargaz.app.",
+  "main": "server.cjs",
   "scripts": {
     "dev": "next dev website -H 127.0.0.1 -p 3100",
     "build": "next build website",
@@ -13,7 +13,7 @@
     "url": "git@github-bargazlive:DevonFG/BargazLive.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Devon Finney-Gaitan",
   "license": "ISC",
   "dependencies": {
     "html-react-parser": "^6.1.9",

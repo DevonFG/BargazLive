@@ -19,6 +19,24 @@ specific platform to have new content. In cases like that, the untested feature 
 Additional Note: Error versions can have beta, dev, and release version
 before and afterwards due to the multi-use of the version type.
 
+## v26.1.0 - Nov 13
+- Added a public status page at bargaz.app/status
+  - Shows live host health including status, power source, battery level, shutdown state, and last report
+  - lists the raw JSON endpoints for health, diagnostics, versions, backups, and network
+  - /endpoints and /endpoints/* redirects to /status
+- Added a website route that proxies status requests to the local health server
+  - Forwards only five known endpoints and never caches responses
+  - Passes through the health server's status code so a degraded host reports a non-200 response
+  - Reports 503 when the health server is unreachable
+- Added a custom server entry point and pointed PM2 at it so it reports the bot version and not the next.js version
+- Capped stored appearance preferences at 10000 records
+  - Migrated the preferences file to a per-record format with its own timestamp
+- Added permanent 308 redirects for www.bargaz.app and www.randomwolf08.com to their cannonical hosts
+- Added shared contact email configuration used by the contact and license pages
+- Updated the BargazBot page to use its own metadata
+- Removed the duplicate README heading from the BargazBot page
+- Confirmed all dependencies and files are in use
+
 ## v26.0.2 - Nov 10
 - Confirmed all features working!
 

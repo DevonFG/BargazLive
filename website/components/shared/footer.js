@@ -28,7 +28,7 @@ export default function Footer() {
       </nav>
 
       <div className="footer-copyright">
-        <p>© {year} Devon Finney-Gaitan. All right reserved for Bargaz.app and RandomWolf08.com.</p>
+        <p>© {year} {COPYRIGHT_HOLDER}. All rights reserved for Bargaz.app and RandomWolf08.com.</p>
         <p>
           The website source code is governed by a custom license.{" "}
           <Link href="https://bargaz.app/license">

@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from "../../other/site-info.js";
 export const metadata = {title: "Licenses | Bargaz", description: "Licensing information for Bargaz and RandomWolf08.",};
 export default function LicensePage() {return (
   <main>
@@ -40,6 +41,6 @@ export default function LicensePage() {return (
       should be assumed.
     </p>
     <h2>Licensing Questions</h2>
-    <p>For permission requests or licensing inquiries,contact{" "}<a href="mailto:devon6608@gmail.com">devon6608@gmail.com</a>.</p>
+    <p>For permission requests or licensing inquiries, contact{" "}<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
   </main>
 );}

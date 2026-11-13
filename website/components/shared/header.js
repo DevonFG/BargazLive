@@ -13,6 +13,7 @@ export default async function Header() {
     ["BargazLive",       "https://live.bargaz.app"],
     ["Contact Us",       "https://bargaz.app/contact"],
     ["Licenses",         "https://bargaz.app/license"],
+    ["Status",           "https://bargaz.app/status"],
     ["About Me",         "https://randomwolf08.com/about"],
     ["RandomWolf08.com", "https://randomwolf08.com"],
   ];
@@ -25,6 +26,7 @@ export default async function Header() {
     ["Linktree",   "https://linktr.ee/randomwolf08"],
     ["Contact Us", "https://bargaz.app/contact"],
     ["Licenses",   "https://bargaz.app/license"],
+    ["Status",           "https://bargaz.app/status"],
     ["Bargaz.app", "https://bargaz.app"],
   ];}
   let secondaryNavigation = [];

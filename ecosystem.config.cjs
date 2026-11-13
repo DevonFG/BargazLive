@@ -2,8 +2,7 @@ module.exports = {
   apps: [
     {
       name: "bargazlive",
-      script: "./node_modules/next/dist/bin/next",
-      args: "start website -H 127.0.0.1 -p 3100",
+      script: "./server.cjs",
       cwd: __dirname,
       instances: 1,
       exec_mode: "fork",

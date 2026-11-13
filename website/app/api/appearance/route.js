@@ -1,4 +1,3 @@
-
 import { NextResponse } from "next/server";
 import { promises as fs } from "node:fs";
 import path from "node:path";
@@ -6,6 +5,8 @@ import os from "node:os";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+const MAX_RECORDS = 10000;
 
 const DATA_DIR = process.env.BARGAZLIVE_DATA_DIR || path.join(
   os.homedir(),
@@ -53,12 +54,46 @@ function validatePreferences(value) {
   };
 }
 
+function normalizeData(data) {
+  if (data?.records && typeof data.records === "object") {
+    return data;
+  }
+
+  const records = {};
+
+  for (const [id, preferences] of Object.entries(data ?? {})) {
+    const checked = validId(id) ? validatePreferences(preferences) : null;
+
+    if (checked) {
+      records[id] = { preferences: checked, updatedAt: 0 };
+    }
+  }
+
+  return { records };
+}
+
+function pruneRecords(data) {
+  const entries = Object.entries(data.records);
+
+  if (entries.length <= MAX_RECORDS) {
+    return data;
+  }
+
+  entries.sort((a, b) => (a[1].updatedAt ?? 0) - (b[1].updatedAt ?? 0));
+
+  for (const [id] of entries.slice(0, entries.length - MAX_RECORDS)) {
+    delete data.records[id];
+  }
+
+  return data;
+}
+
 async function readData() {
   try {
     const content = await fs.readFile(DATA_FILE, "utf8");
-    return JSON.parse(content);
+    return normalizeData(JSON.parse(content));
   } catch (error) {
-    if (error.code === "ENOENT") return {};
+    if (error.code === "ENOENT") return { records: {} };
     throw error;
   }
 }
@@ -85,7 +120,8 @@ let pendingUpdate = Promise.resolve();
 function updatePreferences(id, preferences) {
   const operation = pendingUpdate.catch(() => {}).then(async () => {
     const data = await readData();
-    data[id] = preferences;
+    data.records[id] = { preferences, updatedAt: Date.now() };
+    pruneRecords(data);
     await writeData(data);
   });
 
@@ -112,7 +148,7 @@ export async function GET(request) {
 
     return NextResponse.json(
       {
-        preferences: data[id] || null,
+        preferences: data.records[id]?.preferences ?? null,
         defaults: DEFAULTS
       },
       { headers: noCache }

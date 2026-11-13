@@ -16,7 +16,6 @@ export default async function BotPage() {
     <main>
       <h1>BargazBot</h1>
       <p>Discord notifications and community management.</p>
-      <h2>README</h2>
       <Markdown content={linkifyPlainUrls(readme)} />
     </main>
   );
