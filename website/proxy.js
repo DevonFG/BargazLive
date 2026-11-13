@@ -16,14 +16,14 @@ export function proxy(request) {
 
   const pathname = request.nextUrl.pathname;
   if (pathname === "/endpoints" || pathname.startsWith("/endpoints/")) {const url = request.nextUrl.clone(); url.pathname = "/status" + pathname.slice("/endpoints".length); return NextResponse.redirect(url, 308);}
-  if (pathname === "/endpoints" || pathname.startsWith("/endpoints/")) {const url = request.nextUrl.clone(); url.pathname = "/status" + pathname.slice("/endpoints".length); 
-  return NextResponse.redirect(url, 308);}
+  if (pathname === "/license" || pathname.startsWith("/license/")) {const url = request.nextUrl.clone(); url.pathname = "/legal" + pathname.slice("/license".length); return NextResponse.redirect(url, 308);}
   if (pathname.startsWith("/api/appearance")) {
     return NextResponse.next();
   }
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-bargaz-hostname", hostname);
+  requestHeaders.set("x-bargaz-pathname", pathname);
   const options = {request: { headers: requestHeaders }};
 
   if (pathname.startsWith("/_next/") || pathname.startsWith("/api/") || pathname.startsWith("/logos/") || pathname === "/favicon.ico") {

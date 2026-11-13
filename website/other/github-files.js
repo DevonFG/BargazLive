@@ -25,3 +25,7 @@ export function getBargazBotFile(path) {
 export function getBargazLiveFile(path) {
   return getRepositoryFile("BargazLive", path);
 }
+
+export function getBargazFile(path) {
+  return getRepositoryFile("Bargaz", path);
+}

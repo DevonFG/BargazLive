@@ -19,7 +19,6 @@ const DATA_FILE = path.join(DATA_DIR, "appearance.json");
 
 const DEFAULTS = {
   theme: "light",
-  accent: "default",
   highContrast: false,
   colorblind: false,
 };
@@ -31,24 +30,9 @@ function validId(id) {
 
 function validatePreferences(value) {
   if (!value || typeof value !== "object") return null;
-
-  const accents = [
-    "default", "blue", "red",
-    "green", "purple", "orange"
-  ];
-
-  if (
-    !["light", "dark"].includes(value.theme) ||
-    !accents.includes(value.accent) ||
-    typeof value.highContrast !== "boolean" ||
-    typeof value.colorblind !== "boolean"
-  ) {
-    return null;
-  }
-
+  if (!["light", "dark"].includes(value.theme) || typeof value.highContrast !== "boolean" || typeof value.colorblind !== "boolean") {return null;}
   return {
     theme: value.theme,
-    accent: value.accent,
     highContrast: value.highContrast,
     colorblind: value.colorblind,
   };

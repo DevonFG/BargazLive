@@ -19,6 +19,22 @@ specific platform to have new content. In cases like that, the untested feature 
 Additional Note: Error versions can have beta, dev, and release version
 before and afterwards due to the multi-use of the version type.
 
+## v26.1.1 - Nov 13
+- Moved the Privacy Policy and Terms of Service to the Bargaz repo (legal/privacy.md, legal/terms.md)
+  - Pages fetch the Markdown from GitHub and render it on the site
+  - Removed the BargazLive docs/ folder and the BargazBot legal pages (/bot/privacy, /bot/terms)
+- Renamed /license to /legal
+  - /license permanently redirects to /legal
+  - /legal shows the Licenses document and links to Privacy and Terms
+- Added Privacy Policy and Terms of Service to the header and footer
+- Added a back link ("Back to ...") to all pages except the raw status endpoints
+- Added a version number to the footer
+- Added canonical tags, a sitemap, and robots.txt for each host
+- Removed the accent color option from appearance settings
+  - Theme, high contrast, and colorblind options remain
+  - Saved accent values are cleared from browsers and the appearance store
+- Removed unused dependencies (sanitize-html, html-react-parser)
+
 ## v26.1.0 - Nov 13
 - Added a public status page at bargaz.app/status
   - Shows live host health including status, power source, battery level, shutdown state, and last report

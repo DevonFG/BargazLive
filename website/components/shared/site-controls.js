@@ -8,18 +8,8 @@ const TRUSTED_DOMAINS = ["bargaz.app", "randomwolf08.com"];
 const ID_KEY = "bargaz-appearance-id";
 const TRANSFER_KEY = "bargazAppearanceLink";
 
-const ACCENTS = {
-  default: null,
-  blue: "#3d5a77",
-  red: "#8d0122",
-  green: "#15803d",
-  purple: "#7c3aed",
-  orange: "#c2410c",
-};
-
 const DEFAULTS = {
   theme: "light",
-  accent: "default",
   highContrast: false,
   colorblind: false,
 };
@@ -111,12 +101,6 @@ function getInitialPreferences() {
       : window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light",
-    accent: Object.hasOwn(
-      ACCENTS,
-      localStorage.getItem("bargaz-accent")
-    )
-      ? localStorage.getItem("bargaz-accent")
-      : "default",
     highContrast:
       localStorage.getItem("bargaz-high-contrast") === "true",
     colorblind:
@@ -147,17 +131,8 @@ export default function SiteControls() {
       ? "on"
       : "off";
 
-    if (next.accent === "default") {
-      root.style.removeProperty("--accent-override");
-    } else {
-      root.style.setProperty(
-        "--accent-override",
-        ACCENTS[next.accent]
-      );
-    }
-
+    localStorage.removeItem("bargaz-accent");
     localStorage.setItem("bargaz-theme", next.theme);
-    localStorage.setItem("bargaz-accent", next.accent);
     localStorage.setItem(
       "bargaz-high-contrast",
       String(next.highContrast)
@@ -332,32 +307,6 @@ export default function SiteControls() {
               >
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
-              </select>
-            </label>
-
-            <label className="appearance-field">
-              Accent Color
-              <select
-                value={preferences.accent}
-                disabled={!ready}
-                onChange={(event) =>
-                  updatePreferences({
-                    accent: event.target.value
-                  })
-                }
-              >
-                <option value="default">
-                  Website Default
-                </option>
-                <option value="blue">
-                  Bargaz Blue
-                </option>
-                <option value="red">
-                  RandomWolf08 Red
-                </option>
-                <option value="green">Green</option>
-                <option value="purple">Purple</option>
-                <option value="orange">Orange</option>
               </select>
             </label>
 

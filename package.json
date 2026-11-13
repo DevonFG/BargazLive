@@ -1,6 +1,6 @@
 {
   "name": "bargazlive",
-  "version": "26.1.0",
+  "version": "26.1.1",
   "description": "BargazLive website for bargaz.app, bot.bargaz.app, and live.bargaz.app.",
   "main": "server.cjs",
   "scripts": {
@@ -16,14 +16,12 @@
   "author": "Devon Finney-Gaitan",
   "license": "ISC",
   "dependencies": {
-    "html-react-parser": "^6.1.9",
     "next": "^16.4.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-markdown": "^10.1.0",
     "remark-breaks": "^4.0.0",
-    "remark-gfm": "^4.0.1",
-    "sanitize-html": "^2.18.1"
+    "remark-gfm": "^4.0.1"
   },
   "type": "module"
 }

@@ -12,7 +12,7 @@ export default async function Header() {
     ["BargazBot",        "https://bot.bargaz.app"],
     ["BargazLive",       "https://live.bargaz.app"],
     ["Contact Us",       "https://bargaz.app/contact"],
-    ["Licenses",         "https://bargaz.app/license"],
+    ["Legal",         "https://bargaz.app/legal"],
     ["Status",           "https://bargaz.app/status"],
     ["About Me",         "https://randomwolf08.com/about"],
     ["RandomWolf08.com", "https://randomwolf08.com"],
@@ -25,15 +25,15 @@ export default async function Header() {
     ["About Me",   "https://randomwolf08.com/about"],
     ["Linktree",   "https://linktr.ee/randomwolf08"],
     ["Contact Us", "https://bargaz.app/contact"],
-    ["Licenses",   "https://bargaz.app/license"],
+    ["Legal",   "https://bargaz.app/legal"],
     ["Status",           "https://bargaz.app/status"],
     ["Bargaz.app", "https://bargaz.app"],
   ];}
   let secondaryNavigation = [];
   if (isBot) {secondaryNavigation = [
     ["Changelog",        "https://bot.bargaz.app/changelog"],
-    ["Privacy Policy",   "https://bot.bargaz.app/privacy"],
-    ["Terms of Service", "https://bot.bargaz.app/terms"],
+    ["Privacy Policy",   "https://bargaz.app/privacy"],
+    ["Terms of Service", "https://bargaz.app/terms"],
   ];} else if (isLive) {secondaryNavigation = [["Changelog", "https://live.bargaz.app/changelog"],];}
   return (
     <header className={`site-header ${isRandomWolf ? "site-wolf" : "site-bargaz"}`}>
