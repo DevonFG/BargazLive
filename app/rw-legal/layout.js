@@ -1,0 +1,2 @@
+export const metadata = {title: { default: "Legal | RandomWolf08", template: "%s | RandomWolf08 Legal" }, description: "Privacy Policy, Terms of Service, and content licensing for RandomWolf08.com.",};
+export default function RandomWolfLegalLayout({ children }) {return <>{children}</>;}

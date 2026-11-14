@@ -1,0 +1,2 @@
+export const metadata = {title: { default: "Legal | Bargaz", template: "%s | Bargaz Legal" }, description: "Privacy Policy, Terms of Service, licenses, and trademarks for Bargaz.",};
+export default function BargazLegalLayout({ children }) {return <>{children}</>;}

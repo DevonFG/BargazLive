@@ -1,0 +1,2 @@
+import AlbumScreen from "../../../screens/randomwolf08/AlbumScreen";
+export default async function DesignAlbumPage({ params }) {const { album } = await params; return <AlbumScreen category="design" album={album} />;}

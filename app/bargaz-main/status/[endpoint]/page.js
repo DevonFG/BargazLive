@@ -1,0 +1,2 @@
+import StatusEndpointScreen from "../../../../screens/bargaz/StatusEndpointScreen";
+export default async function StatusEndpointPage({ params }) {const { endpoint } = await params; return <StatusEndpointScreen endpoint={endpoint} />;}

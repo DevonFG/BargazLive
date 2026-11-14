@@ -1,12 +1,12 @@
 {
   "name": "bargazlive",
-  "version": "26.1.1",
+  "version": "26.2.0-dev.1",
   "description": "BargazLive website for bargaz.app, bot.bargaz.app, and live.bargaz.app.",
   "main": "server.cjs",
   "scripts": {
-    "dev": "next dev website -H 127.0.0.1 -p 3100",
-    "build": "next build website",
-    "start": "next start website -H 127.0.0.1 -p 3100"
+    "dev": "next dev -H 127.0.0.1 -p 3100",
+    "build": "next build",
+    "start": "next start -H 127.0.0.1 -p 3100"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,8 @@
   },
   "keywords": [],
   "author": "Devon Finney-Gaitan",
-  "license": "ISC",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
   "dependencies": {
     "next": "^16.4.6",
     "react": "^19.3.1",

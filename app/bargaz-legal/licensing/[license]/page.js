@@ -1,0 +1,2 @@
+import LicenseDetailScreen from "../../../../screens/bargaz/LicenseDetailScreen";
+export default async function LicenseDetailPage({ params }) {const { license } = await params; return <LicenseDetailScreen license={license} />;}

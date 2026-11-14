@@ -1,0 +1,2 @@
+export const metadata = {title: { default: "BargazLive", template: "%s | BargazLive" }, description: "Websites, streaming tools, and creator services by BargazLive.",};
+export default function BargazLiveLayout({ children }) {return <>{children}</>;}

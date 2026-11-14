@@ -19,6 +19,30 @@ specific platform to have new content. In cases like that, the untested feature 
 Additional Note: Error versions can have beta, dev, and release version
 before and afterwards due to the multi-use of the version type.
 
+## v26.2.0-dev.1 - Nov 14
+- Added new multi-subdomain routing supporting the new subdomains on either site (proxy.js)
+- Created next.config.mjs to inject package.json into NEXT_PUBLIC_SITE_VERSION at build time for both Server and Client components
+- Reorganized all pages (views) as screens with folders for screens on both sites, screens on one site, and added new route wrappers and subdomain-specific layout.js metadata
+- Added new deticated project subpages
+- Added about page for bargaz
+- Added feedback page for bargaz
+- Added legal document hub (new page)
+- Added dynamic licensing pages
+- Added raw & formatted versions of the endpoints rather than just the raw version
+- Added randomwolf08.com directory
+- Added portolios for randomwolf08.com including a combined page and per-category pages
+- Added album pages that branch off of the portfolios
+- Updated Privacy, Terms, Licensing, LicenseDetail, RepoMarkdown, and Updates screens to read .md files from the Bargaz repo
+- Removed the website parent folder
+- Updated PM2 to start -H 127.0.0.1 -p 3100 directly
+- Updated header.js, footer.js, back-link.js, layout.js, robots.js, and sitemap.js to support all the new subdomains and track previous page history using hostname + pathname
+- Moved the logos to be in the public folder directly rather than a logos folder in the public folder.
+- Moved site-version.js functionality into next.config.mjs
+- Moved server.cjs functionality into package.json
+- Consolidated proxy.js and ecosystem.config.cjs
+- Removed app/status placeholder folder
+- Removed site-info.js
+
 ## v26.1.1 - Nov 13
 - Moved the Privacy Policy and Terms of Service to the Bargaz repo (legal/privacy.md, legal/terms.md)
   - Pages fetch the Markdown from GitHub and render it on the site

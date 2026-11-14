@@ -1,0 +1,2 @@
+export const metadata = {title: { default: "Bargaz", template: "%s | Bargaz" }, description: "Software, tools, and web infrastructure by Bargaz.",};
+export default function BargazMainLayout({ children }) {return <>{children}</>;}

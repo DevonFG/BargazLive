@@ -1,0 +1,2 @@
+export const metadata = {title: { default: "BargazBot", template: "%s | BargazBot" }, description: "Multipurpose Discord bot for creator notifications and server management.",};
+export default function BargazBotLayout({ children }) {return <>{children}</>;}

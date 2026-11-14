@@ -1,0 +1,2 @@
+export const metadata = {title: { default: "3D Design | RandomWolf08", template: "%s | RandomWolf08 3D" }, description: "3D design, CAD models, and renders by RandomWolf08.",};
+export default function RandomWolf3DLayout({ children }) {return <>{children}</>;}
