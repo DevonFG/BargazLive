@@ -29,24 +29,25 @@ export default async function Footer() {
       <nav className="footer-links" aria-label="Footer navigation">
         <div className="footer-column">
           <Link href="https://bargaz.app">Bargaz.app</Link>
-          <Link href="https://bot.bargaz.app">BargazBot</Link>
-          <Link href="https://live.bargaz.app">BargazLive</Link>
+          <Link href="https://bot.bargaz.app">BargazBot™</Link>
+          <Link href="https://live.bargaz.app">BargazLive™</Link>
           <Link href="https://base.bargaz.app">Bargaz Base</Link>
         </div>
 
         <div className="footer-column">
           <Link href="https://randomwolf08.com">RandomWolf08.com</Link>
-          <Link href="https://randomwolf08.com">Platforms</Link>
-          <Link href="https://randomwolf08.com">Portfolio</Link>
-          <Link href="https://linktr.ee/randomwolf08">Linktree</Link>
+          <Link href="https://randomwolf08.com/portfolio">Portfolio</Link>
+          <Link href={isRandomWolf ? "https://randomwolf08.com/links" : "https://bargaz.app/links"}>
+            Links
+          </Link>
         </div>
 
         <div className="footer-column">
-          <Link href={isRandomWolf ? "https://randomwolf08.com" : "https://bargaz.app/contact"}>
+          <Link href={isRandomWolf ? "https://randomwolf08.com/contact" : "https://bargaz.app/contact"}>
             Contact Us
           </Link>
-          {!isRandomWolf && <Link href="https://bargaz.app">About</Link>}
-          {!isRandomWolf && <Link href="https://bargaz.app">Feedback</Link>}
+          {!isRandomWolf && <Link href="https://bargaz.app/about">About</Link>}
+          {!isRandomWolf && <Link href="https://bargaz.app/feedback">Feedback</Link>}
           <Link href={legalBase}>Legal</Link>
           <Link href={`${legalBase}/privacy`}>Privacy Policy</Link>
           <Link href={`${legalBase}/terms`}>Terms of Service</Link>
@@ -58,10 +59,7 @@ export default async function Footer() {
         {SITE_VERSION && (<p className="footer-version">Version {SITE_VERSION}</p>)}
         <p>
           The website source code is governed by a custom license.{" "}
-          <Link href={isRandomWolf ? "https://randomwolf08.com" : "https://bargaz.app"}>
-            View Legal
-          </Link>{" "}
-          for details.
+          <Link href={legalBase}>View Legal</Link> for details.
         </p>
       </div>
     </footer>

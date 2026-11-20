@@ -9,22 +9,24 @@ import {
 import { linkifyPlainUrls } from "../../markdown-links";
 import Markdown from "../../components/markdown";
 
+const DISCORD_URL = "https://discord.gg/PvYFVshGrZ";
+
 const REPOS = {
   bot: {
-    name: "BargazBot",
-    url: "https://bargaz.app",
+    name: "BargazBot™",
+    url: "https://bot.bargaz.app",
     localDir: path.join(process.cwd(), "..", "BargazBot"),
     fetchRemote: getBargazBotFile,
   },
   live: {
-    name: "BargazLive",
-    url: "https://bargaz.app",
+    name: "BargazLive™",
+    url: "https://live.bargaz.app",
     localDir: process.cwd(),
     fetchRemote: getBargazLiveFile,
   },
   base: {
     name: "Bargaz Base",
-    url: "https://bargaz.app",
+    url: "https://base.bargaz.app",
     localDir: path.join(process.cwd(), ".."),
     fetchRemote: getBargazFile,
   },
@@ -63,17 +65,47 @@ export default async function UpdatesScreen({ project = "all" }) {
 
   const validEntries = entries.filter(Boolean);
   const pageTitle = isEcosystemView
-    ? "Bargaz Ecosystem Updates"
-    : `${validEntries[0]?.name ?? "Project"} Updates`;
+    ? "Bargaz™ ecosystem updates"
+    : `${validEntries[0]?.name ?? "Project"} updates`;
 
   return (
     <main className="page-container">
-      <h1>{pageTitle}</h1>
-      <p>
-        {isEcosystemView
-          ? "Recent releases, feature additions, and infrastructure updates across BargazBot, BargazLive, and Bargaz Base."
-          : `Release announcements, feature updates, and version history for ${validEntries[0]?.name}.`}
-      </p>
+      <section className="hero-section">
+        <h1>{pageTitle}</h1>
+        <p>
+          {isEcosystemView
+            ? "Recent releases, feature additions, and infrastructure updates across BargazBot™, BargazLive™, and Bargaz Base."
+            : `Release announcements, feature updates, and version history for ${validEntries[0]?.name}.`}
+        </p>
+        <div className="hero-actions">
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button button-secondary"
+          >
+            Follow announcements on Discord
+          </a>
+        </div>
+      </section>
+
+      {isEcosystemView && (
+        <section>
+          <h2>Projects</h2>
+          <div className="card-grid">
+            {validEntries.map((item) => (
+              <article className="card" key={`link-${item.key}`}>
+                <h3>
+                  <a href={item.url}>{item.name}</a>
+                </h3>
+                <p>
+                  <Link href={`/changelog`}>Full changelog</Link>
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       {validEntries.map((item) => (
         <section key={item.key}>
@@ -86,22 +118,22 @@ export default async function UpdatesScreen({ project = "all" }) {
           {item.content ? (
             <Markdown content={item.content} />
           ) : (
-            <p>
+            <div className="notice is-warning">
               No updates are currently available for {item.name}. Check{" "}
               <a
-                href="https://discord.gg"
+                href={DISCORD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                The Wolf Den Discord Server
+                The Wolf Den Discord server
               </a>{" "}
               for live announcements.
-            </p>
+            </div>
           )}
 
           {!isEcosystemView && (
             <p>
-              <Link href="/changelog">View Full Changelog</Link>
+              <Link href="/changelog">View full changelog</Link>
             </p>
           )}
         </section>

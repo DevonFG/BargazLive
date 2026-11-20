@@ -13,6 +13,7 @@ const LABELS = {
   "bargaz.app/about": "About",
   "bargaz.app/feedback": "Feedback",
   "bargaz.app/contact": "Contact Us",
+  "bargaz.app/links": "Links",
   "bargaz.app/status": "Status",
   "bargaz.app/status/health": "Health Status",
   "bargaz.app/status/diagnostics": "Diagnostics",
@@ -21,21 +22,17 @@ const LABELS = {
   "bargaz.app/status/network": "Network Status",
 
   // bot.bargaz.app
-  "bot.bargaz.app/": "BargazBot",
-  "bot.bargaz.app/features": "BargazBot Features",
-  "bot.bargaz.app/setup": "BargazBot Setup",
-  "bot.bargaz.app/commands": "BargazBot Commands",
-  "bot.bargaz.app/updates": "BargazBot Updates",
-  "bot.bargaz.app/readme": "BargazBot README",
-  "bot.bargaz.app/changelog": "BargazBot Changelog",
+  "bot.bargaz.app/": "BargazBot™",
+  "bot.bargaz.app/commands": "BargazBot™ Commands",
+  "bot.bargaz.app/updates": "BargazBot™ Updates",
+  "bot.bargaz.app/readme": "BargazBot™ README",
+  "bot.bargaz.app/changelog": "BargazBot™ Changelog",
 
   // live.bargaz.app
-  "live.bargaz.app/": "BargazLive",
-  "live.bargaz.app/features": "BargazLive Features",
-  "live.bargaz.app/setup": "BargazLive Setup",
-  "live.bargaz.app/updates": "BargazLive Updates",
-  "live.bargaz.app/readme": "BargazLive README",
-  "live.bargaz.app/changelog": "BargazLive Changelog",
+  "live.bargaz.app/": "BargazLive™",
+  "live.bargaz.app/updates": "BargazLive™ Updates",
+  "live.bargaz.app/readme": "BargazLive™ README",
+  "live.bargaz.app/changelog": "BargazLive™ Changelog",
 
   // base.bargaz.app
   "base.bargaz.app/": "Bargaz Base",
@@ -54,9 +51,9 @@ const LABELS = {
 
   // randomwolf08.com
   "randomwolf08.com/": "RandomWolf08",
-  "://randomwolf08.com": "Platforms",
-  "://randomwolf08.com": "Portfolio",
-  "://randomwolf08.com": "Contact",
+  "randomwolf08.com/links": "Links",
+  "randomwolf08.com/portfolio": "Portfolio",
+  "randomwolf08.com/contact": "Contact",
 
   // RandomWolf08 portfolios & legal
   "photos.randomwolf08.com/": "Photography Portfolio",
@@ -64,10 +61,35 @@ const LABELS = {
   "3d.randomwolf08.com/": "3D Design Portfolio",
   "other.randomwolf08.com/": "Other Works Portfolio",
   "legal.randomwolf08.com/": "RandomWolf08 Legal",
-  "://randomwolf08.com": "Privacy Policy",
-  "://randomwolf08.com": "Terms of Service",
-  "://randomwolf08.com": "License",
+  "legal.randomwolf08.com/privacy": "Privacy Policy",
+  "legal.randomwolf08.com/terms": "Terms of Service",
+  "legal.randomwolf08.com/license": "License",
 };
+
+const HOST_FALLBACKS = {
+  "photos.randomwolf08.com": "Photograph",
+  "design.randomwolf08.com": "Design",
+  "3d.randomwolf08.com": "3D Work",
+  "other.randomwolf08.com": "Work",
+};
+
+function normalizePath(path) {
+  const clean = path.replace(/\/+$/, "");
+  return clean || "/";
+}
+
+function labelFor(host, path) {
+  const normalized = normalizePath(path);
+  if (LABELS[host]?.[normalized]) return LABELS[host][normalized];
+
+  const segment = normalized.split("/").filter(Boolean).pop();
+  if (segment) {
+    return (
+      segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ")
+    );
+  }
+  return HOST_FALLBACKS[host] || "Page";
+}
 
 export default function BackLink() {
   const pathname = usePathname();
@@ -75,25 +97,39 @@ export default function BackLink() {
 
   useEffect(() => {
     const host = window.location.hostname.toLowerCase();
-    const normalizedPath =
-      host.startsWith("legal.") ? pathname.toLowerCase() : pathname;
-    const currentKey = `${host}${normalizedPath}`;
-    const currentHref = `https://${host}${pathname}`;
+    const path = window.location.pathname;
+    const normalized = normalizePath(path);
 
+    if (normalized.endsWith("/raw")) {
+      sessionStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({ key: `${host}${normalized}`, href: window.location.href })
+      );
+      setPrevious(null);
+      return;
+    }
+
+    const currentKey = `${host}${normalized}`;
+    const currentHref = window.location.href;
     const last = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "null");
 
-    setPrevious(last && last.key !== currentKey ? last : null);
+    setPrevious(
+      last && last.key !== currentKey
+        ? { ...last, label: labelFor(last.host || host, last.path || "/") }
+        : null
+    );
+
     sessionStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({ key: currentKey, href: currentHref })
+      JSON.stringify({ key: currentKey, href: currentHref, host, path: normalized })
     );
   }, [pathname]);
 
-  if (!previous || !LABELS[previous.key]) return null;
+  if (!previous) return null;
 
   return (
     <Link className="page-back" href={previous.href}>
-      ← Back to {LABELS[previous.key]}
+      ← Back to {previous.label}
     </Link>
   );
 }

@@ -3,12 +3,12 @@ import { notFound } from "next/navigation";
 
 const PROJECT_FEATURES = {
   bot: {
-    name: "BargazBot",
+    name: "BargazBot™",
     intro:
-      "BargazBot is a multipurpose Discord bot designed to help livestreamers, content creators, and community moderators automate announcements and manage servers.",
+      "BargazBot™ is a multipurpose Discord bot designed to help livestreamers, content creators, and community moderators automate announcements and manage servers.",
     sections: [
       {
-        title: "Creator Notifications",
+        title: "Creator notifications",
         description:
           "Keep your Discord community updated automatically whenever creators go live or publish new content.",
         items: [
@@ -19,7 +19,7 @@ const PROJECT_FEATURES = {
         ],
       },
       {
-        title: "Server Configuration & Permissions",
+        title: "Server configuration & permissions",
         description:
           "Fine-grained control over where messages go and who can configure the bot in your server.",
         items: [
@@ -29,7 +29,7 @@ const PROJECT_FEATURES = {
         ],
       },
       {
-        title: "Privacy & Data Controls",
+        title: "Privacy & data controls",
         description:
           "Built with minimal data storage and straightforward cleanup tools.",
         items: [
@@ -40,17 +40,17 @@ const PROJECT_FEATURES = {
       },
     ],
     actions: [
-      { label: "View Setup Guide", href: "/setup" },
-      { label: "Browse Commands", href: "/commands" },
+      { label: "View setup guide", href: "/setup" },
+      { label: "Browse commands", href: "/commands" },
     ],
   },
   live: {
-    name: "BargazLive",
+    name: "BargazLive™",
     intro:
-      "BargazLive provides the web infrastructure for the Bargaz ecosystem alongside tools and services built for livestreamers and content creators.",
+      "BargazLive™ provides the web infrastructure for the Bargaz ecosystem alongside tools and services built for livestreamers and content creators.",
     sections: [
       {
-        title: "Multi-Domain Web Platform",
+        title: "Multi-domain web platform",
         description:
           "Powers the websites and subdomains across Bargaz.app and RandomWolf08.com from a unified Next.js architecture.",
         items: [
@@ -60,7 +60,7 @@ const PROJECT_FEATURES = {
         ],
       },
       {
-        title: "Synced Appearance & Accessibility",
+        title: "Synced appearance & accessibility",
         description:
           "Customizable display preferences that follow visitors across Bargaz and RandomWolf08 sites.",
         items: [
@@ -70,7 +70,7 @@ const PROJECT_FEATURES = {
         ],
       },
       {
-        title: "Livestreaming Tools (In Development)",
+        title: "Livestreaming tools (in development)",
         description:
           "Upcoming creator utilities planned for future BargazLive releases.",
         items: [
@@ -80,8 +80,8 @@ const PROJECT_FEATURES = {
       },
     ],
     actions: [
-      { label: "View Setup & Self-Hosting", href: "/setup" },
-      { label: "Latest Updates", href: "/updates" },
+      { label: "Latest updates", href: "/updates" },
+      { label: "Changelog", href: "/changelog" },
     ],
   },
 };
@@ -92,33 +92,38 @@ export default function ProjectFeaturesScreen({ project }) {
 
   return (
     <main className="page-container">
-      <h1>{data.name} Features</h1>
-      <p>{data.intro}</p>
+      <section className="hero-section">
+        <h1>{data.name} features</h1>
+        <p>{data.intro}</p>
+        <div className="hero-actions">
+          {data.actions.map((action) => (
+            <Link key={action.href} href={action.href}>
+              {action.label}
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {data.sections.map((section) => (
         <section key={section.title}>
           <h2>{section.title}</h2>
           <p>{section.description}</p>
-          <ul>
+          <div className="card-grid">
             {section.items.map((item) => (
-              <li key={item}>{item}</li>
+              <article className="card" key={item}>
+                <p>{item}</p>
+              </article>
             ))}
-          </ul>
+          </div>
         </section>
       ))}
 
       <section>
-        <h2>Next Steps</h2>
-        <ul>
-          {data.actions.map((action) => (
-            <li key={action.href}>
-              <Link href={action.href}>{action.label}</Link>
-            </li>
-          ))}
-          <li>
-            <Link href="/readme">Read Full README</Link>
-          </li>
-        </ul>
+        <h2>Next steps</h2>
+        <p>
+          Read the <Link href="/readme">full README</Link> for installation and
+          usage details.
+        </p>
       </section>
     </main>
   );

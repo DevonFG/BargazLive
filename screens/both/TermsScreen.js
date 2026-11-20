@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import Link from "next/link";
 import { getBargazFile } from "../../github-files";
 import { linkifyPlainUrls } from "../../markdown-links";
 import Markdown from "../../components/markdown";
@@ -33,18 +34,32 @@ export default async function TermsScreen() {
 
   return (
     <main className="page-container">
+      <section className="hero-section">
+        <h1>Terms of Service</h1>
+        <p>
+          Rules, acceptable use, disclaimers, and conditions for using Bargaz™
+          and RandomWolf08 sites and services.
+        </p>
+      </section>
+
       {content ? (
         <Markdown content={content} />
       ) : (
-        <>
-          <h1>Terms of Service</h1>
-          <p>
-            The Terms of Service are currently unavailable. Please contact{" "}
-            <a href="mailto:devon6608@gmail.com">devon6608@gmail.com</a> if you
-            need a copy.
-          </p>
-        </>
+        <div className="notice is-warning">
+          The Terms of Service are currently unavailable. Please email{" "}
+          <a href="mailto:legal@bargaz.app">legal@bargaz.app</a> if you need a
+          copy.
+        </div>
       )}
+
+      <section>
+        <h2>Questions</h2>
+        <p>
+          For terms questions, use the{" "}
+          <Link href="/contact">Contact page</Link> or email{" "}
+          <a href="mailto:legal@bargaz.app">legal@bargaz.app</a>.
+        </p>
+      </section>
     </main>
   );
 }

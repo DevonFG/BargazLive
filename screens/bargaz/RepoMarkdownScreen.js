@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getBargazBotFile,
@@ -11,17 +12,17 @@ import Markdown from "../../components/markdown";
 
 const REPOS = {
   bot: {
-    name: "BargazBot",
+    name: "BargazBot™",
     localDir: path.join(process.cwd(), "..", "BargazBot"),
     fetchRemote: getBargazBotFile,
   },
   live: {
-    name: "BargazLive",
+    name: "BargazLive™",
     localDir: process.cwd(),
     fetchRemote: getBargazLiveFile,
   },
   base: {
-    name: "Bargaz",
+    name: "Bargaz Base",
     localDir: path.join(process.cwd(), ".."),
     fetchRemote: getBargazFile,
   },
@@ -59,18 +60,33 @@ export default async function RepoMarkdownScreen({ project, docType }) {
 
   return (
     <main className="page-container">
-      <h1>
-        {repo.name} {doc.label}
-      </h1>
+      <section className="hero-section">
+        <h1>
+          {repo.name} {doc.label}
+        </h1>
+        <p>
+          Source document synced from the {repo.name} repository on GitHub.
+        </p>
+      </section>
 
       {content ? (
         <Markdown content={content} />
       ) : (
-        <p>
+        <div className="notice is-warning">
           Unable to load {repo.name} {doc.label} right now. Please try again
           later.
-        </p>
+        </div>
       )}
+
+      <section>
+        <h2>More from this project</h2>
+        <p>
+          {" "}
+          <Link href="/">Project home</Link> ·{" "}
+          <Link href="/updates">Updates</Link> ·{" "}
+          <Link href="/changelog">Changelog</Link>
+        </p>
+      </section>
     </main>
   );
 }

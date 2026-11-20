@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import Link from "next/link";
 import { getBargazFile } from "../../github-files";
 import { linkifyPlainUrls } from "../../markdown-links";
 import Markdown from "../../components/markdown";
@@ -33,18 +34,32 @@ export default async function PrivacyScreen() {
 
   return (
     <main className="page-container">
+      <section className="hero-section">
+        <h1>Privacy Policy</h1>
+        <p>
+          How Bargaz™ and RandomWolf08 sites handle appearance settings, logs,
+          identifiers, analytics, and advertising data.
+        </p>
+      </section>
+
       {content ? (
         <Markdown content={content} />
       ) : (
-        <>
-          <h1>Privacy Policy</h1>
-          <p>
-            The Privacy Policy is currently unavailable. Please contact{" "}
-            <a href="mailto:devon6608@gmail.com">devon6608@gmail.com</a> if you
-            need a copy.
-          </p>
-        </>
+        <div className="notice is-warning">
+          The Privacy Policy is currently unavailable. Please email{" "}
+          <a href="mailto:legal@bargaz.app">legal@bargaz.app</a> if you need a
+          copy.
+        </div>
       )}
+
+      <section>
+        <h2>Questions</h2>
+        <p>
+          For privacy or data deletion requests, use the{" "}
+          <Link href="/contact">Contact page</Link> or email{" "}
+          <a href="mailto:legal@bargaz.app">legal@bargaz.app</a>.
+        </p>
+      </section>
     </main>
   );
 }

@@ -35,40 +35,64 @@ export default async function LicensingScreen({ domain = "bargaz" }) {
 
   return (
     <main className="page-container">
-      <h1>{isRandomWolf ? "License" : "Licensing"}</h1>
+      <section className="hero-section">
+        <h1>{isRandomWolf ? "License" : "Licensing"}</h1>
+        <p>
+          {isRandomWolf
+            ? "Terms governing the source code and content published on RandomWolf08.com and its portfolio subdomains."
+            : "Licensing terms for Bargaz™ software, website source code, products, and visual marks."}
+        </p>
+        <div className="hero-actions">
+          <a
+            href="mailto:legal@bargaz.app"
+            className="button button-secondary"
+          >
+            Licensing questions
+          </a>
+        </div>
+      </section>
 
       {!isRandomWolf && (
         <section>
-          <h2>Specific Bargaz Licenses</h2>
-          <ul>
-            <li>
-              <Link href="/licensing/bargaz-code-product-license-v1.0">
-                Bargaz Code & Product License v1.0
-              </Link>{" "}
-              — Covers Bargaz software, website source code, and products.
-            </li>
-            <li>
-              <Link href="/licensing/bargaz-logo-license-v1.0">
-                Bargaz Logo License v1.0
-              </Link>{" "}
-              — Covers usage terms for Bargaz and RandomWolf08 logos.
-            </li>
-          </ul>
+          <h2>Specific Bargaz licenses</h2>
+          <div className="card-grid">
+            <article className="card">
+              <h3>
+                <Link href="/licensing/bargaz-code-product-license-v1.0">
+                  Code &amp; Product License v1.0
+                </Link>
+              </h3>
+              <p>
+                Covers Bargaz™ software, website source code, and products.
+              </p>
+            </article>
+            <article className="card">
+              <h3>
+                <Link href="/licensing/bargaz-logo-license-v1.0">
+                  Logo License v1.0
+                </Link>
+              </h3>
+              <p>
+                Covers usage terms for Bargaz™ and RandomWolf08 logos.
+              </p>
+            </article>
+          </div>
         </section>
       )}
 
       <section>
+        <h2>Full license text</h2>
         {content ? (
           <Markdown content={content} />
         ) : (
-          <p>
+          <div className="notice is-warning">
             License text is currently unavailable. View full licensing details
             at{" "}
-            <a href="https://bargaz.app">
+            <a href="https://legal.bargaz.app/licensing">
               legal.bargaz.app/licensing
             </a>
             .
-          </p>
+          </div>
         )}
       </section>
     </main>

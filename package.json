@@ -1,12 +1,13 @@
 {
   "name": "bargazlive",
-  "version": "26.2.0-dev.1",
+  "version": "26.2.0-dev.2",
   "description": "BargazLive website for bargaz.app, bot.bargaz.app, and live.bargaz.app.",
   "main": "server.cjs",
   "scripts": {
     "dev": "next dev -H 127.0.0.1 -p 3100",
     "build": "next build",
-    "start": "next start -H 127.0.0.1 -p 3100"
+    "start": "next start -H 127.0.0.1 -p 3100",
+    "host": "node host.mjs"
   },
   "repository": {
     "type": "git",

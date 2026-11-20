@@ -19,6 +19,25 @@ specific platform to have new content. In cases like that, the untested feature 
 Additional Note: Error versions can have beta, dev, and release version
 before and afterwards due to the multi-use of the version type.
 
+## v26.2.0-dev.2 - Nov 20
+- Fully redesigned globals.css and layout.js for a new layout
+- Added sidebar-toggle.js in components for the new mobile sidebar
+- Edited header.js and footer.js for compatibility to other new changes and did some minor corrections
+- Fixed duplicate and missing labels in back-link.js
+- Reworked shared controls in site-controls.js
+- Edited sitemap.js for compatibility to other new changes and did some minor corrections
+- proxy.js now has a /preview pass through for when I want to see a page before deploying and edited for compatibility to other new changes
+- Added links/page.js in bargaz-main and rw-main
+- Deleted PlatformsScreen.js and platforms/page.js from randomwolf08.com
+- All bargaz screens have been rebuilt with the new layout and ™ usage, and correct legal/feedback links
+- Rebuilt Contact, Licensing, Privacy, and Terms screens
+- Added /links page to LinksScreen.js
+- Rebuilt Album, Category Portfolio, Combined Portfolio, Home, and Legal Home screens
+- FeedbackScreen.js now added and includes the setup as far as BargazLive is consurned for feedback
+- api/feedback/tags/route.js and api/feedback/unsubscribe/route.js created for thin proxies to BargazBot for the feedback feature
+- README.md updated for new page config and URLs
+- .env.exmaple created
+
 ## v26.2.0-dev.1 - Nov 14
 - Added new multi-subdomain routing supporting the new subdomains on either site (proxy.js)
 - Created next.config.mjs to inject package.json into NEXT_PUBLIC_SITE_VERSION at build time for both Server and Client components

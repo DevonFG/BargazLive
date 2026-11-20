@@ -1,0 +1,11 @@
+{
+  "terminal.integrated.env.windows": {
+    "PATH": "${env:PATH};${workspaceFolder}"
+  },
+  "terminal.integrated.env.linux": {
+    "PATH": "${workspaceFolder}:${env:PATH}"
+  },
+  "terminal.integrated.env.osx": {
+    "PATH": "${workspaceFolder}:${env:PATH}"
+  }
+}

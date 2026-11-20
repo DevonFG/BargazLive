@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+const DISCORD_URL = "https://discord.gg/PvYFVshGrZ";
+
 const PROJECTS = {
   bot: {
-    name: "BargazBot",
+    name: "BargazBot™",
     tagline: "Discord notifications and community management.",
     description:
-      "BargazBot is a customizable, multipurpose Discord bot built to support content creators and their communities with automated stream/upload alerts, channel routing, and granular permission controls.",
+      "BargazBot™ is a customizable, multipurpose Discord bot built to support content creators and their communities with automated stream/upload alerts, channel routing, and granular permission controls.",
     highlights: [
       "Automated creator notifications for YouTube, Twitch, and Kick.",
       "Custom destination channels, creator nicknames, and announcement messages.",
@@ -15,32 +17,23 @@ const PROJECTS = {
     ],
     quickLinks: [
       { label: "Features", href: "/features" },
-      { label: "Setup Guide", href: "/setup" },
+      { label: "Setup guide", href: "/setup" },
       { label: "Commands", href: "/commands" },
       { label: "Updates", href: "/updates" },
       { label: "README", href: "/readme" },
       { label: "Changelog", href: "/changelog" },
     ],
     externalLinks: [
-      {
-        label: "BargazBot on Top.gg",
-        url: "https://top.gg",
-      },
-      {
-        label: "GitHub Repository",
-        url: "https://github.com",
-      },
-      {
-        label: "The Wolf Den Discord Server",
-        url: "https://discord.gg",
-      },
+      { label: "BargazBot on Top.gg", url: "https://top.gg/bot/1472482809095393384" },
+      { label: "GitHub repository", url: "https://github.com/DevonFG/BargazBot" },
+      { label: "The Wolf Den Discord server", url: DISCORD_URL },
     ],
   },
   live: {
-    name: "BargazLive",
+    name: "BargazLive™",
     tagline: "Websites, streaming tools, and creator services.",
     description:
-      "BargazLive powers the multi-domain web infrastructure for Bargaz.app and RandomWolf08.com while serving as the foundation for upcoming livestreaming tools and multi-platform creator utilities.",
+      "BargazLive™ powers the multi-domain web infrastructure for Bargaz.app and RandomWolf08.com while serving as the foundation for upcoming livestreaming tools and multi-platform creator utilities.",
     highlights: [
       "Unified multi-domain Next.js web platform across Bargaz.app and RandomWolf08.com.",
       "Cross-site synced appearance settings (light/dark theme, high contrast, colorblind modes).",
@@ -48,21 +41,13 @@ const PROJECTS = {
       "Planned multi-platform livestreaming chatbot and creator integrations.",
     ],
     quickLinks: [
-      { label: "Features", href: "/features" },
-      { label: "Setup & Hosting", href: "/setup" },
       { label: "Updates", href: "/updates" },
       { label: "README", href: "/readme" },
       { label: "Changelog", href: "/changelog" },
     ],
     externalLinks: [
-      {
-        label: "GitHub Repository",
-        url: "https://github.com",
-      },
-      {
-        label: "The Wolf Den Discord Server",
-        url: "https://discord.gg",
-      },
+      { label: "GitHub repository", url: "https://github.com/DevonFG/BargazLive" },
+      { label: "The Wolf Den Discord server", url: DISCORD_URL },
     ],
   },
   base: {
@@ -82,14 +67,8 @@ const PROJECTS = {
       { label: "Changelog", href: "/changelog" },
     ],
     externalLinks: [
-      {
-        label: "Live Host Status",
-        url: "https://bargaz.app",
-      },
-      {
-        label: "GitHub Repository",
-        url: "https://github.com",
-      },
+      { label: "Live host status", url: "https://bargaz.app/status" },
+      { label: "GitHub repository", url: "https://github.com/DevonFG/Bargaz" },
     ],
   },
 };
@@ -104,39 +83,52 @@ export default function ProjectHomeScreen({ project }) {
         <h1>{data.name}</h1>
         <p className="hero-subtitle">{data.tagline}</p>
         <p>{data.description}</p>
+        <div className="hero-actions">
+          {data.quickLinks.slice(0, 3).map((link) => (
+            <Link key={link.href} href={link.href}>
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section>
-        <h2>Key Highlights</h2>
-        <ul>
+        <h2>Key highlights</h2>
+        <div className="card-grid">
           {data.highlights.map((item) => (
-            <li key={item}>{item}</li>
+            <article className="card" key={item}>
+              <p>{item}</p>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
 
       <section>
-        <h2>Documentation &amp; Pages</h2>
-        <ul>
+        <h2>Documentation &amp; pages</h2>
+        <div className="link-grid">
           {data.quickLinks.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href}>{link.label}</Link>
-            </li>
+            <article className="link-card" key={link.href}>
+              <h3>
+                <Link href={link.href}>{link.label}</Link>
+              </h3>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
 
       <section>
-        <h2>Related Links</h2>
-        <ul>
+        <h2>Related links</h2>
+        <div className="link-grid">
           {data.externalLinks.map((link) => (
-            <li key={link.url}>
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
-                {link.label}
-              </a>
-            </li>
+            <article className="link-card" key={link.url}>
+              <h3>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
+              </h3>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
     </main>
   );

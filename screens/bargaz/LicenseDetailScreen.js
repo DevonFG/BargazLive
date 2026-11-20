@@ -61,23 +61,36 @@ export default async function LicenseDetailScreen({ license }) {
 
   return (
     <main className="page-container">
-      <p>
-        <Link href="/licensing">← Back to Licensing</Link>
-      </p>
-
       {content ? (
-        <Markdown content={content} />
-      ) : (
-        <>
+        <section className="hero-section">
           <h1>{entry.title}</h1>
           <p>
-            The full text for {entry.title} is currently unavailable. Please
-            contact{" "}
-            <a href="mailto:devon6608@gmail.com">devon6608@gmail.com</a> if you
-            need a copy or licensing permission.
+            The official license text for Bargaz™ software, products, and
+            visual marks.
           </p>
-        </>
+        </section>
+      ) : (
+        <section className="hero-section">
+          <h1>{entry.title}</h1>
+          <div className="notice is-warning">
+            The full text for this license is currently unavailable. Email{" "}
+            <a href="mailto:legal@bargaz.app">legal@bargaz.app</a> for a copy or
+            licensing permission.
+          </div>
+        </section>
       )}
+
+      {content && <Markdown content={content} />}
+
+      <section>
+        <h2>Related documents</h2>
+        <p>
+          See the <Link href="/licensing">Licensing overview</Link> for all
+          Bargaz licenses, or the{" "}
+          <Link href="/trademarks">Trademarks page</Link> for brand usage
+          guidance.
+        </p>
+      </section>
     </main>
   );
 }
