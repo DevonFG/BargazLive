@@ -19,6 +19,9 @@ specific platform to have new content. In cases like that, the untested feature 
 Additional Note: Error versions can have beta, dev, and release version
 before and afterwards due to the multi-use of the version type.
 
+## v26.2.0-dev.3 - Nov 21
+- Removed stale "main" in package.json
+
 ## v26.2.0-dev.2 - Nov 20
 - Fully redesigned globals.css and layout.js for a new layout
 - Added sidebar-toggle.js in components for the new mobile sidebar
